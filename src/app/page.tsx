@@ -1,16 +1,26 @@
-import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import Image from 'next/image';
+import { Button } from '@/components/ui/button';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 export default function Home() {
   return (
     <div className="min-h-screen p-8 bg-background">
       <div className="max-w-4xl mx-auto space-y-8">
         <div className="text-center space-y-4">
-          <h1 className="text-4xl font-bold text-foreground">Membership Platform</h1>
-          <p className="text-muted-foreground">Built with Next.js and Shadcn/UI</p>
+          <h1 className="text-4xl font-bold text-foreground">
+            Membership Platform
+          </h1>
+          <p className="text-muted-foreground">
+            Built with Next.js and Shadcn/UI
+          </p>
           <Badge variant="secondary">Shadcn/UI Setup Complete</Badge>
         </div>
 
@@ -18,17 +28,24 @@ export default function Home() {
           <Card>
             <CardHeader>
               <CardTitle>Welcome Card</CardTitle>
-              <CardDescription>Testing Shadcn/UI card component</CardDescription>
+              <CardDescription>
+                Testing Shadcn/UI card component
+              </CardDescription>
             </CardHeader>
             <CardContent>
-              <p>This card demonstrates that Shadcn/UI components are working correctly.</p>
+              <p>
+                This card demonstrates that Shadcn/UI components are working
+                correctly.
+              </p>
             </CardContent>
           </Card>
 
           <Card>
             <CardHeader>
               <CardTitle>User Profile</CardTitle>
-              <CardDescription>Testing avatar and badge components</CardDescription>
+              <CardDescription>
+                Testing avatar and badge components
+              </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="flex items-center space-x-4">

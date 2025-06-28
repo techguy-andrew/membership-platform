@@ -16,18 +16,21 @@ This is a custom membership platform that allows creators, educators, and busine
 ## Tech Stack
 
 ### Core Framework
+
 - **Next.js 15** with App Router - Full-stack React framework
 - **TypeScript** (strict mode) - Type-safe JavaScript
 - **Tailwind CSS** - Utility-first CSS framework
 - **Shadcn/UI** - Modern React component library using Radix UI primitives
 
 ### Key Dependencies
+
 - **React Hook Form** with Zod validation - Form handling and validation
 - **Class Variance Authority (CVA)** - Component variant management
 - **Lucide React** - Icon library
 - **Tailwind Merge** - Utility for merging Tailwind classes
 
 ### Planned Integration Stack
+
 - **PostgreSQL** with **Prisma ORM** - Database and ORM
 - **NextAuth.js v5** - Authentication
 - **Stripe** - Payment processing
@@ -38,6 +41,7 @@ This is a custom membership platform that allows creators, educators, and busine
 ## Architecture & Code Organization
 
 ### Directory Structure
+
 ```
 src/
 ├── app/                    # Next.js App Router pages and layouts
@@ -55,12 +59,14 @@ src/
 ```
 
 ### Component System
+
 - Uses **Shadcn/UI** component library with "new-york" style
 - Components built on **Radix UI** primitives for accessibility
 - **Class Variance Authority (CVA)** for type-safe variant management
 - Consistent design system with CSS variables for theming
 
 ### Styling Approach
+
 - **Tailwind CSS** with CSS variables for theming
 - Color scheme based on `zinc` with dark mode support
 - Component variants defined using CVA patterns
@@ -69,23 +75,27 @@ src/
 ## Development Patterns
 
 ### Component Creation
+
 - Follow Shadcn/UI patterns for new components
 - Use CVA for variant management when creating reusable components
 - Implement proper TypeScript interfaces with `VariantProps`
 - Include `forwardRef` for components that accept refs
 
 ### Form Handling
+
 - Use React Hook Form with Zod validation schemas
 - Leverage the form components from Shadcn/UI
 - Follow controlled component patterns
 
 ### Utility Functions
+
 - Use the `cn()` utility from `@/lib/utils` for conditional class merging
 - Prefer utility-first approach with Tailwind CSS classes
 
 ## Planned Features (Based on Context)
 
 The platform is designed to implement a comprehensive membership system including:
+
 - User authentication and role-based access control
 - Tiered membership subscriptions with Stripe integration
 - Content management system with access gating
@@ -98,13 +108,15 @@ The platform is designed to implement a comprehensive membership system includin
 ## Configuration
 
 ### Shadcn/UI Configuration
+
 - Style: "new-york"
-- Base color: "zinc" 
+- Base color: "zinc"
 - CSS variables enabled
 - Icon library: Lucide React
 - Path aliases configured for clean imports
 
 ### Path Aliases
+
 - `@/components` → `src/components`
 - `@/lib` → `src/lib`
 - `@/hooks` → `src/hooks`
