@@ -1,6 +1,6 @@
-# {{PROJECT_NAME}}
+# Next.js Starter Kit Template
 
-{{PROJECT_DESCRIPTION}}
+A modern, production-ready Next.js starter kit with authentication, dashboard, and comprehensive UI components.
 
 ## ✨ Features
 
@@ -65,10 +65,21 @@
 src/
 ├── app/                    # Next.js App Router
 │   ├── (auth)/            # Authentication routes
+│   │   ├── login/
+│   │   ├── register/
+│   │   └── forgot-password/
 │   ├── (dashboard)/       # Dashboard routes
+│   │   ├── profile/
+│   │   ├── settings/
+│   │   └── [feature]/
 │   ├── (marketing)/       # Public marketing pages
+│   │   ├── about/
+│   │   ├── contact/
+│   │   └── pricing/
 │   ├── api/               # API routes
-│   ├── examples/          # Component examples
+│   │   ├── auth/
+│   │   ├── users/
+│   │   └── webhooks/
 │   ├── globals.css
 │   ├── layout.tsx
 │   └── page.tsx
@@ -94,7 +105,8 @@ src/
 │   └── use-local-storage.ts # Local storage hook
 ├── types/                # TypeScript types
 │   ├── index.ts         # Global type definitions
-│   └── template.ts      # Template configuration types
+│   ├── auth.ts          # Auth types
+│   └── user.ts          # User types
 └── styles/               # Additional styles
     ├── animations.css
     └── components.css
@@ -300,6 +312,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Support
 
-- 📧 Email: [{{CONTACT_EMAIL}}]
-- 🐛 Issues: [GitHub Issues](https://github.com/{{GITHUB_URL}}/issues)
-- 📖 Documentation: [GitHub Wiki](https://github.com/{{GITHUB_URL}}/wiki)
+- 📧 Email: [your-email@example.com]
+- 🐛 Issues: [GitHub Issues](https://github.com/your-username/your-repo/issues)
+- 📖 Documentation: [GitHub Wiki](https://github.com/your-username/your-repo/wiki)
