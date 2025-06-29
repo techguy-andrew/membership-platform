@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import { Navbar } from '@/components/layout/navbar';
 import { Footer } from '@/components/layout/footer';
+import { constructMetadata } from '@/lib/metadata';
+import { siteConfig } from '@/config/site';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -14,11 +16,11 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 });
 
-export const metadata: Metadata = {
-  title: 'MembershipPlatform - Build Your Membership Empire',
-  description:
-    'Create, launch, and scale your membership platform with powerful tools for content creators, educators, and businesses.',
-};
+export const metadata: Metadata = constructMetadata({
+  title: siteConfig.name,
+  description: siteConfig.description,
+  canonical: siteConfig.url,
+});
 
 export default function RootLayout({
   children,

@@ -1,0 +1,41 @@
+{
+  "project": {
+    "name": "nextjs-starter-kit",
+    "description": "A modern Next.js starter kit with authentication, dashboard, and UI components",
+    "version": "1.0.0",
+    "author": "{{AUTHOR_NAME}}",
+    "license": "MIT"
+  },
+  "features": {
+    "authentication": true,
+    "dashboard": true,
+    "marketing": true,
+    "api": true,
+    "database": false,
+    "payments": false,
+    "email": false
+  },
+  "styling": {
+    "primaryColor": "zinc",
+    "accentColor": "blue",
+    "theme": "light",
+    "font": "inter"
+  },
+  "seo": {
+    "defaultTitle": "{{PROJECT_NAME}}",
+    "defaultDescription": "{{PROJECT_DESCRIPTION}}",
+    "keywords": ["nextjs", "react", "typescript", "tailwindcss"],
+    "ogImage": "/og-image.png"
+  },
+  "site": {
+    "url": "{{SITE_URL}}",
+    "twitter": "{{TWITTER_URL}}",
+    "github": "{{GITHUB_URL}}",
+    "linkedin": "{{LINKEDIN_URL}}",
+    "youtube": "{{YOUTUBE_URL}}",
+    "contact": {
+      "email": "{{CONTACT_EMAIL}}",
+      "phone": "{{CONTACT_PHONE}}"
+    }
+  }
+}
