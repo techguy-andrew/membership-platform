@@ -2,16 +2,14 @@
 
 import { useState } from 'react';
 import { Sidebar } from '@/components/dashboard/Sidebar';
-import { DashboardView } from './dashboard/page';
+import { MembershipView } from './membership/page';
 import { CoursesView } from '@/components/dashboard/views/CoursesView';
-import { InsightsView } from '@/components/dashboard/views/InsightsView';
 import { LiveStreamsView } from '@/components/dashboard/views/LiveStreamsView';
 import { EventsView } from '@/components/dashboard/views/EventsView';
-import { CommunityView } from '@/components/dashboard/views/CommunityView';
 import { ResourcesView } from '@/components/dashboard/views/ResourcesView';
 import { ProfileView } from '@/components/dashboard/views/ProfileView';
 
-function renderView(view: DashboardView) {
+function renderView(view: MembershipView) {
   switch (view) {
     case 'videos':
       return <CoursesView />;
@@ -19,12 +17,8 @@ function renderView(view: DashboardView) {
       return <LiveStreamsView />;
     case 'events':
       return <EventsView />;
-    case 'community':
-      return <CommunityView />;
     case 'resources':
       return <ResourcesView />;
-    case 'insights':
-      return <InsightsView />;
     case 'profile':
       return <ProfileView />;
     default:
@@ -37,8 +31,8 @@ export default function DashboardLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const [activeView, setActiveView] = useState<DashboardView>('dashboard');
-  const handleViewChange = (view: DashboardView) => {
+  const [activeView, setActiveView] = useState<MembershipView>('membership');
+  const handleViewChange = (view: MembershipView) => {
     setActiveView(view);
   };
 
@@ -48,10 +42,10 @@ export default function DashboardLayout({
     <div className="flex min-h-screen">
       <Sidebar activeView={activeView} onViewChange={handleViewChange} />
       <main className="flex-1 overflow-auto">
-        {activeView === 'dashboard' || !currentView ? children : (
-          <div className="max-w-7xl mx-auto p-6">
-            {currentView}
-          </div>
+        {activeView === 'membership' || !currentView ? (
+          children
+        ) : (
+          <div className="max-w-7xl mx-auto p-6">{currentView}</div>
         )}
       </main>
     </div>

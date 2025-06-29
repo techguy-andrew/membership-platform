@@ -1,51 +1,54 @@
 'use client';
 
-import { Radio, Clock, Users, Calendar, Play } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Radio, Clock, Users, Calendar, Play } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 
 const liveStreams = [
   {
-    title: "Live Coaching: Scaling Your Business",
-    description: "Interactive coaching session focused on sustainable business growth strategies and overcoming scaling challenges.",
-    date: "Today",
-    time: "4:00 PM EST",
-    duration: "60 min",
+    title: 'Live Coaching: Scaling Your Business',
+    description:
+      'Interactive coaching session focused on sustainable business growth strategies and overcoming scaling challenges.',
+    date: 'Today',
+    time: '4:00 PM EST',
+    duration: '60 min',
     attendees: 45,
     maxAttendees: 50,
     isLive: true,
-    host: "Sarah Mitchell"
+    host: 'Sarah Mitchell',
   },
   {
-    title: "Q&A: Marketing Strategies That Work",
-    description: "Live Q&A session covering the most effective marketing strategies for business growth in 2025.",
-    date: "Tomorrow",
-    time: "2:00 PM EST",
-    duration: "45 min",
+    title: 'Q&A: Marketing Strategies That Work',
+    description:
+      'Live Q&A session covering the most effective marketing strategies for business growth in 2025.',
+    date: 'Tomorrow',
+    time: '2:00 PM EST',
+    duration: '45 min',
     attendees: 32,
     maxAttendees: 100,
     isLive: false,
-    host: "Michael Chen"
+    host: 'Michael Chen',
   },
   {
-    title: "Leadership Workshop: Building High-Performance Teams",
-    description: "Interactive workshop on developing leadership skills and creating teams that consistently deliver results.",
-    date: "Jan 5, 2025",
-    time: "3:00 PM EST",
-    duration: "90 min",
+    title: 'Leadership Workshop: Building High-Performance Teams',
+    description:
+      'Interactive workshop on developing leadership skills and creating teams that consistently deliver results.',
+    date: 'Jan 5, 2025',
+    time: '3:00 PM EST',
+    duration: '90 min',
     attendees: 67,
     maxAttendees: 150,
     isLive: false,
-    host: "Jennifer Rodriguez"
-  }
+    host: 'Jennifer Rodriguez',
+  },
 ];
 
 const upcomingSchedule = [
-  { day: "Monday", time: "2:00 PM EST", title: "Business Strategy Session" },
-  { day: "Wednesday", time: "4:00 PM EST", title: "Live Coaching Q&A" },
-  { day: "Friday", time: "1:00 PM EST", title: "Industry Insights" }
+  { day: 'Monday', time: '2:00 PM EST', title: 'Business Strategy Session' },
+  { day: 'Wednesday', time: '4:00 PM EST', title: 'Live Coaching Q&A' },
+  { day: 'Friday', time: '1:00 PM EST', title: 'Industry Insights' },
 ];
 
 export function LiveStreamsView() {
@@ -59,7 +62,8 @@ export function LiveStreamsView() {
             Live Streams
           </h1>
           <p className="text-muted-foreground mt-1">
-            Join live coaching sessions, workshops, and Q&A with our expert coaches
+            Join live coaching sessions, workshops, and Q&A with our expert
+            coaches
           </p>
         </div>
       </div>
@@ -74,9 +78,12 @@ export function LiveStreamsView() {
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <div>
-            <h3 className="text-xl font-semibold mb-2">Live Coaching: Scaling Your Business</h3>
+            <h3 className="text-xl font-semibold mb-2">
+              Live Coaching: Scaling Your Business
+            </h3>
             <p className="text-muted-foreground mb-4">
-              Interactive coaching session focused on sustainable business growth strategies.
+              Interactive coaching session focused on sustainable business
+              growth strategies.
             </p>
             <div className="flex items-center gap-4 text-sm">
               <div className="flex items-center gap-1">
@@ -98,83 +105,57 @@ export function LiveStreamsView() {
         </div>
       </div>
 
-      {/* Stats Overview */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <Card>
-          <CardContent className="p-4">
-            <div className="flex items-center gap-2">
-              <Radio className="h-5 w-5 text-red-600" />
-              <div>
-                <div className="text-2xl font-bold">1</div>
-                <div className="text-sm text-muted-foreground">Live Now</div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardContent className="p-4">
-            <div className="flex items-center gap-2">
-              <Calendar className="h-5 w-5 text-blue-600" />
-              <div>
-                <div className="text-2xl font-bold">3</div>
-                <div className="text-sm text-muted-foreground">This Week</div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardContent className="p-4">
-            <div className="flex items-center gap-2">
-              <Users className="h-5 w-5 text-green-600" />
-              <div>
-                <div className="text-2xl font-bold">144</div>
-                <div className="text-sm text-muted-foreground">Total Registered</div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-
       {/* Upcoming Streams */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div className="space-y-4">
           <h2 className="text-xl font-semibold">Upcoming Live Streams</h2>
-          {liveStreams.filter(stream => !stream.isLive).map((stream, index) => (
-            <Card key={index} className="hover:shadow-md transition-shadow">
-              <CardContent className="p-4">
-                <div className="flex items-start justify-between">
-                  <div className="flex-1">
-                    <h3 className="font-semibold mb-2">{stream.title}</h3>
-                    <p className="text-sm text-muted-foreground mb-3">{stream.description}</p>
-                    <div className="flex items-center gap-4 text-sm">
-                      <div className="flex items-center gap-1">
-                        <Calendar className="h-4 w-4" />
-                        <span>{stream.date} at {stream.time}</span>
+          {liveStreams
+            .filter(stream => !stream.isLive)
+            .map((stream, index) => (
+              <Card key={index} className="hover:shadow-md transition-shadow">
+                <CardContent className="p-4">
+                  <div className="flex items-start justify-between">
+                    <div className="flex-1">
+                      <h3 className="font-semibold mb-2">{stream.title}</h3>
+                      <p className="text-sm text-muted-foreground mb-3">
+                        {stream.description}
+                      </p>
+                      <div className="flex items-center gap-4 text-sm">
+                        <div className="flex items-center gap-1">
+                          <Calendar className="h-4 w-4" />
+                          <span>
+                            {stream.date} at {stream.time}
+                          </span>
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <Clock className="h-4 w-4" />
+                          <span>{stream.duration}</span>
+                        </div>
                       </div>
-                      <div className="flex items-center gap-1">
-                        <Clock className="h-4 w-4" />
-                        <span>{stream.duration}</span>
+                      <div className="flex items-center gap-2 mt-2">
+                        <Avatar className="h-6 w-6">
+                          <AvatarFallback className="text-xs">
+                            {stream.host
+                              .split(' ')
+                              .map(n => n[0])
+                              .join('')}
+                          </AvatarFallback>
+                        </Avatar>
+                        <span className="text-sm text-muted-foreground">
+                          {stream.host}
+                        </span>
                       </div>
                     </div>
-                    <div className="flex items-center gap-2 mt-2">
-                      <Avatar className="h-6 w-6">
-                        <AvatarFallback className="text-xs">
-                          {stream.host.split(' ').map(n => n[0]).join('')}
-                        </AvatarFallback>
-                      </Avatar>
-                      <span className="text-sm text-muted-foreground">{stream.host}</span>
+                    <div className="ml-4">
+                      <Button variant="outline">Register</Button>
+                      <div className="text-xs text-muted-foreground mt-2 text-center">
+                        {stream.attendees}/{stream.maxAttendees} registered
+                      </div>
                     </div>
                   </div>
-                  <div className="ml-4">
-                    <Button variant="outline">Register</Button>
-                    <div className="text-xs text-muted-foreground mt-2 text-center">
-                      {stream.attendees}/{stream.maxAttendees} registered
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+                </CardContent>
+              </Card>
+            ))}
         </div>
 
         <div className="space-y-4">
@@ -185,10 +166,15 @@ export function LiveStreamsView() {
             </CardHeader>
             <CardContent className="space-y-3">
               {upcomingSchedule.map((session, index) => (
-                <div key={index} className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
+                <div
+                  key={index}
+                  className="flex items-center justify-between p-3 bg-muted/50 rounded-lg"
+                >
                   <div>
                     <div className="font-medium">{session.title}</div>
-                    <div className="text-sm text-muted-foreground">{session.day}</div>
+                    <div className="text-sm text-muted-foreground">
+                      {session.day}
+                    </div>
                   </div>
                   <div className="text-sm font-medium">{session.time}</div>
                 </div>

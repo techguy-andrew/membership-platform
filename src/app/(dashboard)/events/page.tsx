@@ -1,5 +1,11 @@
 import Link from 'next/link';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Calendar, MapPin, Users, Clock, Plus } from 'lucide-react';
@@ -52,9 +58,16 @@ export default function EventsPage() {
   return (
     <div className="space-y-6">
       <nav className="flex items-center space-x-1 text-sm text-muted-foreground mb-4">
-        <Link href="/" className="hover:text-foreground transition-colors">Home</Link>
+        <Link href="/" className="hover:text-foreground transition-colors">
+          Home
+        </Link>
         <span className="mx-1">/</span>
-        <Link href="/dashboard" className="hover:text-foreground transition-colors">Dashboard</Link>
+        <Link
+          href="/membership"
+          className="hover:text-foreground transition-colors"
+        >
+          Dashboard
+        </Link>
         <span className="mx-1">/</span>
         <span className="text-foreground">Events</span>
       </nav>
@@ -83,7 +96,7 @@ export default function EventsPage() {
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
-            {upcomingEvents.map((event) => (
+            {upcomingEvents.map(event => (
               <div key={event.id} className="p-6 border rounded-lg space-y-4">
                 <div className="flex items-start justify-between">
                   <div className="space-y-2">
@@ -104,7 +117,11 @@ export default function EventsPage() {
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Badge variant={event.type === 'Virtual' ? 'secondary' : 'default'}>
+                    <Badge
+                      variant={
+                        event.type === 'Virtual' ? 'secondary' : 'default'
+                      }
+                    >
                       {event.type}
                     </Badge>
                     <Badge variant="outline">{event.price}</Badge>
@@ -117,14 +134,18 @@ export default function EventsPage() {
                       {event.attendees}/{event.maxAttendees} attendees
                     </span>
                     <div className="w-32 bg-muted rounded-full h-2">
-                      <div 
-                        className="bg-primary h-2 rounded-full" 
-                        style={{ width: `${(event.attendees / event.maxAttendees) * 100}%` }}
+                      <div
+                        className="bg-primary h-2 rounded-full"
+                        style={{
+                          width: `${(event.attendees / event.maxAttendees) * 100}%`,
+                        }}
                       />
                     </div>
                   </div>
                   <div className="flex gap-2">
-                    <Button size="sm" variant="outline">Edit</Button>
+                    <Button size="sm" variant="outline">
+                      Edit
+                    </Button>
                     <Button size="sm">Manage</Button>
                   </div>
                 </div>
@@ -142,8 +163,11 @@ export default function EventsPage() {
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
-              {pastEvents.map((event) => (
-                <div key={event.id} className="flex items-center justify-between p-4 border rounded-lg">
+              {pastEvents.map(event => (
+                <div
+                  key={event.id}
+                  className="flex items-center justify-between p-4 border rounded-lg"
+                >
                   <div className="space-y-1">
                     <h3 className="font-medium">{event.title}</h3>
                     <div className="flex items-center gap-4 text-sm text-muted-foreground">
@@ -154,7 +178,9 @@ export default function EventsPage() {
                   </div>
                   <div className="flex items-center gap-2">
                     <Badge variant="secondary">{event.type}</Badge>
-                    <Button size="sm" variant="outline">View Report</Button>
+                    <Button size="sm" variant="outline">
+                      View Report
+                    </Button>
                   </div>
                 </div>
               ))}
@@ -171,19 +197,27 @@ export default function EventsPage() {
             <CardContent>
               <div className="grid gap-4">
                 <div className="flex justify-between items-center">
-                  <span className="text-sm text-muted-foreground">Total Events</span>
+                  <span className="text-sm text-muted-foreground">
+                    Total Events
+                  </span>
                   <span className="font-bold">24</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-sm text-muted-foreground">Total Attendees</span>
+                  <span className="text-sm text-muted-foreground">
+                    Total Attendees
+                  </span>
                   <span className="font-bold">1,847</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-sm text-muted-foreground">Average Rating</span>
+                  <span className="text-sm text-muted-foreground">
+                    Average Rating
+                  </span>
                   <span className="font-bold">4.8/5.0</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-sm text-muted-foreground">Revenue Generated</span>
+                  <span className="text-sm text-muted-foreground">
+                    Revenue Generated
+                  </span>
                   <span className="font-bold">$47,890</span>
                 </div>
               </div>

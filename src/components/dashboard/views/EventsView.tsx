@@ -1,92 +1,98 @@
 'use client';
 
-import { Calendar, Clock, Users, MapPin, Filter } from "lucide-react";
-import { EventCard } from "@/components/dashboard/event-card";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { Calendar, Users, MapPin, Filter } from 'lucide-react';
+import { EventCard } from '@/components/dashboard/event-card';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 
 const eventTypes = [
-  { name: "All Events", count: 8 },
-  { name: "Masterclass", count: 3 },
-  { name: "Workshop", count: 2 },
-  { name: "Networking", count: 2 },
-  { name: "Bootcamp", count: 1 }
+  { name: 'All Events', count: 8 },
+  { name: 'Masterclass', count: 3 },
+  { name: 'Workshop', count: 2 },
+  { name: 'Networking', count: 2 },
+  { name: 'Bootcamp', count: 1 },
 ];
 
 const allEvents = [
   {
-    title: "Q1 Business Planning Masterclass",
-    description: "Strategic planning session to set your business up for success in the coming quarter with actionable frameworks.",
-    date: "Jan 3, 2025",
-    time: "2:00 PM EST",
-    duration: "90 min",
-    type: "masterclass" as const,
+    title: 'Q1 Business Planning Masterclass',
+    description:
+      'Strategic planning session to set your business up for success in the coming quarter with actionable frameworks.',
+    date: 'Jan 3, 2025',
+    time: '2:00 PM EST',
+    duration: '90 min',
+    type: 'masterclass' as const,
     attendees: 127,
     maxAttendees: 200,
     hasRSVP: true,
-    location: "Virtual Event"
+    location: 'Virtual Event',
   },
   {
-    title: "Elite Business Bootcamp 2025",
-    description: "Intensive 3-day bootcamp covering advanced business strategies, leadership development, and scaling techniques.",
-    date: "Feb 15-17, 2025",
-    time: "9:00 AM EST",
-    duration: "3 days",
-    type: "bootcamp" as const,
+    title: 'Elite Business Bootcamp 2025',
+    description:
+      'Intensive 3-day bootcamp covering advanced business strategies, leadership development, and scaling techniques.',
+    date: 'Feb 15-17, 2025',
+    time: '9:00 AM EST',
+    duration: '3 days',
+    type: 'bootcamp' as const,
     attendees: 45,
     maxAttendees: 50,
     hasRSVP: false,
-    location: "Miami, FL"
+    location: 'Miami, FL',
   },
   {
-    title: "Marketing Excellence Workshop",
-    description: "Hands-on workshop focusing on modern marketing strategies that drive real business growth and customer acquisition.",
-    date: "Jan 20, 2025",
-    time: "1:00 PM EST",
-    duration: "2 hours",
-    type: "workshop" as const,
+    title: 'Marketing Excellence Workshop',
+    description:
+      'Hands-on workshop focusing on modern marketing strategies that drive real business growth and customer acquisition.',
+    date: 'Jan 20, 2025',
+    time: '1:00 PM EST',
+    duration: '2 hours',
+    type: 'workshop' as const,
     attendees: 67,
     maxAttendees: 100,
     hasRSVP: true,
-    location: "Virtual Event"
+    location: 'Virtual Event',
   },
   {
     title: "Leadership Summit: Building Tomorrow's Teams",
-    description: "Connect with fellow leaders and learn cutting-edge strategies for building and managing high-performance teams.",
-    date: "Mar 5, 2025",
-    time: "10:00 AM EST",
-    duration: "4 hours",
-    type: "networking" as const,
+    description:
+      'Connect with fellow leaders and learn cutting-edge strategies for building and managing high-performance teams.',
+    date: 'Mar 5, 2025',
+    time: '10:00 AM EST',
+    duration: '4 hours',
+    type: 'networking' as const,
     attendees: 89,
     maxAttendees: 150,
     hasRSVP: false,
-    location: "New York, NY"
+    location: 'New York, NY',
   },
   {
-    title: "Financial Mastery Workshop",
-    description: "Deep dive into financial planning, cash flow management, and investment strategies for business owners.",
-    date: "Jan 28, 2025",
-    time: "3:00 PM EST",
-    duration: "2.5 hours",
-    type: "workshop" as const,
+    title: 'Financial Mastery Workshop',
+    description:
+      'Deep dive into financial planning, cash flow management, and investment strategies for business owners.',
+    date: 'Jan 28, 2025',
+    time: '3:00 PM EST',
+    duration: '2.5 hours',
+    type: 'workshop' as const,
     attendees: 34,
     maxAttendees: 75,
     hasRSVP: true,
-    location: "Virtual Event"
+    location: 'Virtual Event',
   },
   {
-    title: "Elite Networking Mixer",
-    description: "Exclusive networking event for our elite members to connect, share insights, and build valuable business relationships.",
-    date: "Feb 8, 2025",
-    time: "6:00 PM EST",
-    duration: "3 hours",
-    type: "networking" as const,
+    title: 'Elite Networking Mixer',
+    description:
+      'Exclusive networking event for our elite members to connect, share insights, and build valuable business relationships.',
+    date: 'Feb 8, 2025',
+    time: '6:00 PM EST',
+    duration: '3 hours',
+    type: 'networking' as const,
     attendees: 23,
     maxAttendees: 40,
     hasRSVP: false,
-    location: "Chicago, IL"
-  }
+    location: 'Chicago, IL',
+  },
 ];
 
 export function EventsView() {
@@ -100,7 +106,8 @@ export function EventsView() {
             Events & Workshops
           </h1>
           <p className="text-muted-foreground mt-1">
-            Join exclusive events, masterclasses, and networking opportunities designed for elite business leaders
+            Join exclusive events, masterclasses, and networking opportunities
+            designed for elite business leaders
           </p>
         </div>
         <Button variant="outline" className="flex items-center gap-2">
@@ -109,60 +116,12 @@ export function EventsView() {
         </Button>
       </div>
 
-      {/* Stats Overview */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <Card>
-          <CardContent className="p-4">
-            <div className="flex items-center gap-2">
-              <Calendar className="h-5 w-5 text-blue-600" />
-              <div>
-                <div className="text-2xl font-bold">8</div>
-                <div className="text-sm text-muted-foreground">Upcoming Events</div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardContent className="p-4">
-            <div className="flex items-center gap-2">
-              <Users className="h-5 w-5 text-green-600" />
-              <div>
-                <div className="text-2xl font-bold">385</div>
-                <div className="text-sm text-muted-foreground">Total Registered</div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardContent className="p-4">
-            <div className="flex items-center gap-2">
-              <MapPin className="h-5 w-5 text-purple-600" />
-              <div>
-                <div className="text-2xl font-bold">3</div>
-                <div className="text-sm text-muted-foreground">In-Person Events</div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardContent className="p-4">
-            <div className="flex items-center gap-2">
-              <Clock className="h-5 w-5 text-orange-600" />
-              <div>
-                <div className="text-2xl font-bold">12</div>
-                <div className="text-sm text-muted-foreground">Hours This Month</div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-
       {/* Event Types Filter */}
       <div className="flex flex-wrap gap-2">
         {eventTypes.map((type, index) => (
-          <Badge 
-            key={index} 
-            variant={index === 0 ? "default" : "outline"}
+          <Badge
+            key={index}
+            variant={index === 0 ? 'default' : 'outline'}
             className="cursor-pointer hover:bg-primary/10"
           >
             {type.name} ({type.count})
@@ -176,12 +135,15 @@ export function EventsView() {
           <div className="flex items-center gap-2">
             <Badge className="bg-blue-600">Featured Event</Badge>
           </div>
-          <CardTitle className="text-xl">Elite Business Bootcamp 2025</CardTitle>
+          <CardTitle className="text-xl">
+            Elite Business Bootcamp 2025
+          </CardTitle>
         </CardHeader>
         <CardContent>
           <p className="text-muted-foreground mb-4">
-            Intensive 3-day bootcamp covering advanced business strategies, leadership development, and scaling techniques. 
-            Limited to 50 participants for maximum impact and personalized attention.
+            Intensive 3-day bootcamp covering advanced business strategies,
+            leadership development, and scaling techniques. Limited to 50
+            participants for maximum impact and personalized attention.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
             <div className="flex items-center gap-2">
@@ -205,9 +167,11 @@ export function EventsView() {
 
       {/* Events Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {allEvents.filter(event => event.type !== 'bootcamp').map((event, index) => (
-          <EventCard key={index} {...event} />
-        ))}
+        {allEvents
+          .filter(event => event.type !== 'bootcamp')
+          .map((event, index) => (
+            <EventCard key={index} {...event} />
+          ))}
       </div>
     </div>
   );

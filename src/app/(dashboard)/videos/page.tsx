@@ -17,7 +17,8 @@ const videoCategories = [
 const mockVideos = [
   {
     title: 'Scaling Your Business: Proven Strategies',
-    description: 'Learn how to scale your business with actionable frameworks and real-world examples.',
+    description:
+      'Learn how to scale your business with actionable frameworks and real-world examples.',
     category: 'strategy',
     duration: '42:15',
     thumbnail: '/videos/strategy1.jpg',
@@ -26,7 +27,8 @@ const mockVideos = [
   },
   {
     title: 'Mastering Digital Marketing in 2024',
-    description: 'A step-by-step guide to building a high-converting marketing funnel.',
+    description:
+      'A step-by-step guide to building a high-converting marketing funnel.',
     category: 'marketing',
     duration: '36:20',
     thumbnail: '/videos/marketing1.jpg',
@@ -35,7 +37,8 @@ const mockVideos = [
   },
   {
     title: 'Leadership Mindset for Entrepreneurs',
-    description: 'Develop the mindset and habits of high-performing business leaders.',
+    description:
+      'Develop the mindset and habits of high-performing business leaders.',
     category: 'leadership',
     duration: '28:10',
     thumbnail: '/videos/leadership1.jpg',
@@ -58,7 +61,7 @@ export default function VideosPage() {
   const [category, setCategory] = useState('');
 
   const filteredVideos = mockVideos.filter(
-    (v) =>
+    v =>
       (category === '' || v.category === category) &&
       (search === '' || v.title.toLowerCase().includes(search.toLowerCase()))
   );
@@ -71,8 +74,8 @@ export default function VideosPage() {
         badge="Courses"
         breadcrumbs={[
           { label: 'Home', href: '/' },
-          { label: 'Dashboard', href: '/dashboard' },
-          { label: 'Videos' }
+          { label: 'Dashboard', href: '/membership' },
+          { label: 'Videos' },
         ]}
       />
       <FilterBar
@@ -105,17 +108,25 @@ export default function VideosPage() {
       </div>
       {/* Playlists/Learning Paths */}
       <section className="mt-12">
-        <h2 className="text-xl font-bold mb-4">Course Playlists & Learning Paths</h2>
+        <h2 className="text-xl font-bold mb-4">
+          Course Playlists & Learning Paths
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="p-6 bg-muted rounded-lg">
             <h3 className="font-semibold mb-2">Entrepreneur Growth Path</h3>
-            <p className="text-sm text-muted-foreground mb-2">A step-by-step video series to help you scale from startup to 7-figures.</p>
+            <p className="text-sm text-muted-foreground mb-2">
+              A step-by-step video series to help you scale from startup to
+              7-figures.
+            </p>
             <Progress value={70} className="h-2 mb-2" />
             <span className="text-xs text-muted-foreground">70% complete</span>
           </div>
           <div className="p-6 bg-muted rounded-lg">
             <h3 className="font-semibold mb-2">Leadership Mastery Series</h3>
-            <p className="text-sm text-muted-foreground mb-2">Develop advanced leadership skills with our expert-led video courses.</p>
+            <p className="text-sm text-muted-foreground mb-2">
+              Develop advanced leadership skills with our expert-led video
+              courses.
+            </p>
             <Progress value={40} className="h-2 mb-2" />
             <span className="text-xs text-muted-foreground">40% complete</span>
           </div>
@@ -123,4 +134,4 @@ export default function VideosPage() {
       </section>
     </div>
   );
-} 
+}

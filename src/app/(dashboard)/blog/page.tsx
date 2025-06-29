@@ -15,7 +15,8 @@ const blogCategories = [
 const mockPosts = [
   {
     title: 'How to Build a Million-Dollar Business',
-    description: 'Actionable steps and mindset shifts for scaling your business to 7 figures.',
+    description:
+      'Actionable steps and mindset shifts for scaling your business to 7 figures.',
     author: 'David Chen',
     authorAvatar: '/avatars/david.jpg',
     date: '2024-06-01',
@@ -24,7 +25,8 @@ const mockPosts = [
   },
   {
     title: "Sarah's E-commerce Success Story",
-    description: 'From $5K to $2M: How Sarah scaled her online store with our coaching.',
+    description:
+      'From $5K to $2M: How Sarah scaled her online store with our coaching.',
     author: 'Sarah Chen',
     authorAvatar: '/avatars/sarah.jpg',
     date: '2024-05-20',
@@ -32,7 +34,8 @@ const mockPosts = [
   },
   {
     title: '2024 Business Trends: What to Watch',
-    description: 'Stay ahead of the curve with these key industry trends for entrepreneurs.',
+    description:
+      'Stay ahead of the curve with these key industry trends for entrepreneurs.',
     author: 'Michael Rodriguez',
     authorAvatar: '/avatars/michael.jpg',
     date: '2024-05-10',
@@ -40,7 +43,8 @@ const mockPosts = [
   },
   {
     title: 'Mastering Sales Calls',
-    description: 'Techniques for closing more deals and building lasting client relationships.',
+    description:
+      'Techniques for closing more deals and building lasting client relationships.',
     author: 'Lisa Thompson',
     authorAvatar: '/avatars/lisa.jpg',
     date: '2024-04-28',
@@ -53,7 +57,7 @@ export default function BlogPage() {
   const [category, setCategory] = useState('');
 
   const filteredPosts = mockPosts.filter(
-    (p) =>
+    p =>
       (category === '' || p.category === category) &&
       (search === '' || p.title.toLowerCase().includes(search.toLowerCase()))
   );
@@ -66,8 +70,8 @@ export default function BlogPage() {
         badge="Insights"
         breadcrumbs={[
           { label: 'Home', href: '/' },
-          { label: 'Dashboard', href: '/dashboard' },
-          { label: 'Blog' }
+          { label: 'Dashboard', href: '/membership' },
+          { label: 'Blog' },
         ]}
       />
       <FilterBar
@@ -100,9 +104,13 @@ export default function BlogPage() {
       </div>
       {/* Pagination (mock) */}
       <div className="flex justify-center mt-8">
-        <button className="px-4 py-2 rounded bg-muted text-muted-foreground hover:bg-primary/10">Previous</button>
-        <button className="px-4 py-2 rounded bg-muted text-muted-foreground hover:bg-primary/10 ml-2">Next</button>
+        <button className="px-4 py-2 rounded bg-muted text-muted-foreground hover:bg-primary/10">
+          Previous
+        </button>
+        <button className="px-4 py-2 rounded bg-muted text-muted-foreground hover:bg-primary/10 ml-2">
+          Next
+        </button>
       </div>
     </div>
   );
-} 
+}

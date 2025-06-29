@@ -21,6 +21,7 @@ This document provides practical examples of using the checkpoint automation sys
 ```
 
 **What happens:**
+
 1. Script prompts for phase name, description, and type
 2. Creates backup of all documentation
 3. Updates all documentation files with current date
@@ -50,12 +51,14 @@ This document provides practical examples of using the checkpoint automation sys
 ```
 
 **Generated files:**
+
 - `FEATURE_PHASE_2_IMPLEMENTATION_REPORT.md`
 - Updated `context/setup-log.md`
 - Updated `context/development-plan.md`
 - Updated `CLAUDE.md`
 
 **Commit message:**
+
 ```
 feat: Phase 2 - User authentication and session management
 
@@ -103,6 +106,7 @@ Co-Authored-By: Claude <noreply@anthropic.com>
 ```
 
 **Commit message:**
+
 ```
 fix: Hotfix 1.2.1 - Fixed user login session timeout issue
 
@@ -158,6 +162,7 @@ Co-Authored-By: Claude <noreply@anthropic.com>
 ```
 
 **Commit message:**
+
 ```
 release: Release 1.0 - First stable release with core features
 
@@ -195,6 +200,7 @@ Co-Authored-By: Claude <noreply@anthropic.com>
 ```
 
 **Benefits:**
+
 - Preview commit message
 - See which files would be updated
 - Validate input without making changes
@@ -211,6 +217,7 @@ Co-Authored-By: Claude <noreply@anthropic.com>
 ```
 
 **Use cases:**
+
 - Work in progress commits
 - Experimental features
 - Local testing
@@ -318,6 +325,7 @@ cp -r .checkpoint_backup_20250629_143022/* ./  # Restore specific backup
 
 ```markdown
 # Phase 2 Implementation Report
+
 ## User authentication and session management
 
 **Implementation Date:** June 29, 2025
@@ -325,15 +333,21 @@ cp -r .checkpoint_backup_20250629_143022/* ./  # Restore specific backup
 **Type:** Feature Implementation
 
 ## Overview
+
 This report documents the successful implementation of user authentication and session management...
 
 ## Technical Implementation Details
+
 ### Architecture Decisions
+
 ### Key Features Implemented
+
 ### Issues Encountered & Resolved
+
 ### Implementation Statistics
 
 ## Success Metrics Achieved
+
 ## Ready for Next Phase
 ```
 
@@ -357,26 +371,31 @@ git log --oneline -5
 ## 💡 Tips and Best Practices
 
 ### 1. Consistent Naming
+
 - Use consistent phase naming: "Phase 1", "Phase 2", etc.
 - Use descriptive but concise descriptions
 - Choose appropriate types for your changes
 
 ### 2. Regular Checkpoints
+
 - Create checkpoints at logical completion points
 - Don't wait too long between checkpoints
 - Use quick mode for minor updates
 
 ### 3. Documentation First
+
 - Always ensure your implementation matches your description
 - Update inline code comments before creating checkpoints
 - Keep documentation current with code changes
 
 ### 4. Testing Integration
+
 - Run tests before creating feature checkpoints
 - Use dry-run mode to verify changes
 - Validate system with `./scripts/validate.sh`
 
 ### 5. Team Coordination
+
 - Coordinate checkpoint timing with team members
 - Use consistent commit message formatting
 - Share implementation reports with stakeholders
@@ -385,4 +404,4 @@ git log --oneline -5
 
 **Generated with [Claude Code](https://claude.ai/code)**
 
-*Last Updated: June 29, 2025*
+_Last Updated: June 29, 2025_

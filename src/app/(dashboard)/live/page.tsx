@@ -1,5 +1,11 @@
 import Link from 'next/link';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { PlayCircle, Calendar, Users, Clock, Radio } from 'lucide-react';
@@ -44,9 +50,16 @@ export default function LiveStreamsPage() {
   return (
     <div className="space-y-6">
       <nav className="flex items-center space-x-1 text-sm text-muted-foreground mb-4">
-        <Link href="/" className="hover:text-foreground transition-colors">Home</Link>
+        <Link href="/" className="hover:text-foreground transition-colors">
+          Home
+        </Link>
         <span className="mx-1">/</span>
-        <Link href="/dashboard" className="hover:text-foreground transition-colors">Dashboard</Link>
+        <Link
+          href="/membership"
+          className="hover:text-foreground transition-colors"
+        >
+          Dashboard
+        </Link>
         <span className="mx-1">/</span>
         <span className="text-foreground">Live Streams</span>
       </nav>
@@ -75,8 +88,11 @@ export default function LiveStreamsPage() {
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
-            {upcomingStreams.map((stream) => (
-              <div key={stream.id} className="flex items-center justify-between p-4 border rounded-lg">
+            {upcomingStreams.map(stream => (
+              <div
+                key={stream.id}
+                className="flex items-center justify-between p-4 border rounded-lg"
+              >
                 <div className="space-y-1">
                   <h3 className="font-medium">{stream.title}</h3>
                   <div className="flex items-center gap-4 text-sm text-muted-foreground">
@@ -117,8 +133,11 @@ export default function LiveStreamsPage() {
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
-            {pastStreams.map((stream) => (
-              <div key={stream.id} className="flex items-center justify-between p-4 border rounded-lg">
+            {pastStreams.map(stream => (
+              <div
+                key={stream.id}
+                className="flex items-center justify-between p-4 border rounded-lg"
+              >
                 <div className="space-y-1">
                   <h3 className="font-medium">{stream.title}</h3>
                   <div className="flex items-center gap-4 text-sm text-muted-foreground">
@@ -129,7 +148,9 @@ export default function LiveStreamsPage() {
                 </div>
                 <div className="flex items-center gap-2">
                   <Badge variant="secondary">Completed</Badge>
-                  <Button size="sm" variant="outline">View</Button>
+                  <Button size="sm" variant="outline">
+                    View
+                  </Button>
                 </div>
               </div>
             ))}
@@ -156,7 +177,9 @@ export default function LiveStreamsPage() {
             </div>
             <div className="text-center">
               <div className="text-2xl font-bold">24h 30m</div>
-              <div className="text-sm text-muted-foreground">Total Duration</div>
+              <div className="text-sm text-muted-foreground">
+                Total Duration
+              </div>
             </div>
             <div className="text-center">
               <div className="text-2xl font-bold">154</div>

@@ -48,16 +48,17 @@ const publicNavigation = [
 ];
 
 const authenticatedNavigation = [
-  { name: 'Dashboard', href: '/dashboard' },
-  { name: 'Insights', href: '/dashboard/insights' },
-  { name: 'Community', href: '/dashboard/community' },
-  { name: 'Profile', href: '/dashboard/profile' },
+  { name: 'Dashboard', href: '/membership' },
+  { name: 'Profile', href: '/membership/profile' },
 ];
 
 export function Navbar() {
   const pathname = usePathname();
   const { isAuthenticated, user, logout } = useAuth();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  // Check if we're on a membership page
+  const isMembershipPage = pathname.startsWith('/membership');
 
   const navigation = isAuthenticated
     ? authenticatedNavigation
@@ -70,6 +71,40 @@ export function Navbar() {
     return pathname.startsWith(href);
   };
 
+  // Simplified navbar for membership pages
+  if (isMembershipPage) {
+    return (
+      <header className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
+        <div className="container mx-auto px-4">
+          <div className="flex h-16 items-center justify-between">
+            {/* Logo */}
+            <Link
+              href="/membership"
+              className="text-xl font-bold text-foreground"
+            >
+              Elite Business Coaching
+            </Link>
+
+            {/* Empty center space */}
+            <div className="flex-1"></div>
+
+            {/* Sign Out Button */}
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={logout}
+              className="flex items-center space-x-2"
+            >
+              <LogOut className="w-4 h-4" />
+              <span className="hidden sm:inline">Sign Out</span>
+            </Button>
+          </div>
+        </div>
+      </header>
+    );
+  }
+
+  // Original navbar for public pages
   return (
     <header className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
       <div className="container mx-auto px-4">
@@ -125,25 +160,34 @@ export function Navbar() {
                   </div>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem asChild>
-                    <Link href="/dashboard" className="flex items-center">
+                    <Link href="/membership" className="flex items-center">
                       <LayoutDashboard className="mr-2 h-4 w-4" />
                       Dashboard
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
-                    <Link href="/dashboard/profile" className="flex items-center">
+                    <Link
+                      href="/membership/profile"
+                      className="flex items-center"
+                    >
                       <User className="mr-2 h-4 w-4" />
                       Profile
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
-                    <Link href="/dashboard/billing" className="flex items-center">
+                    <Link
+                      href="/membership/billing"
+                      className="flex items-center"
+                    >
                       <CreditCard className="mr-2 h-4 w-4" />
                       Billing
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
-                    <Link href="/dashboard/settings" className="flex items-center">
+                    <Link
+                      href="/membership/settings"
+                      className="flex items-center"
+                    >
                       <Settings className="mr-2 h-4 w-4" />
                       Settings
                     </Link>
@@ -214,28 +258,28 @@ export function Navbar() {
                     </p>
                   </div>
                   <Link
-                    href="/dashboard"
+                    href="/membership"
                     className="block px-3 py-2 text-base font-medium text-muted-foreground hover:text-foreground hover:bg-muted/50"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Dashboard
                   </Link>
                   <Link
-                    href="/dashboard/profile"
+                    href="/membership/profile"
                     className="block px-3 py-2 text-base font-medium text-muted-foreground hover:text-foreground hover:bg-muted/50"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Profile
                   </Link>
                   <Link
-                    href="/dashboard/billing"
+                    href="/membership/billing"
                     className="block px-3 py-2 text-base font-medium text-muted-foreground hover:text-foreground hover:bg-muted/50"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Billing
                   </Link>
                   <Link
-                    href="/dashboard/settings"
+                    href="/membership/settings"
                     className="block px-3 py-2 text-base font-medium text-muted-foreground hover:text-foreground hover:bg-muted/50"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >

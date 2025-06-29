@@ -5,29 +5,29 @@ import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import {
   PlayCircle,
   BookOpen,
-  Users,
   Calendar,
-  FileText,
   Settings,
   Folder,
   LayoutDashboard,
 } from 'lucide-react';
-import { DashboardView } from '@/app/(dashboard)/dashboard/page';
+import { MembershipView } from '@/app/(dashboard)/membership/page';
 
 const navLinks = [
-  { label: 'Dashboard', view: 'dashboard' as DashboardView, icon: LayoutDashboard },
-  { label: 'Courses', view: 'videos' as DashboardView, icon: BookOpen },
-  { label: 'Community', view: 'community' as DashboardView, icon: Users },
-  { label: 'My Sessions', view: 'live' as DashboardView, icon: PlayCircle },
-  { label: 'Events', view: 'events' as DashboardView, icon: Calendar },
-  { label: 'Resources', view: 'resources' as DashboardView, icon: Folder },
-  { label: 'Insights', view: 'insights' as DashboardView, icon: FileText },
-  { label: 'Profile', view: 'profile' as DashboardView, icon: Settings },
+  {
+    label: 'Dashboard',
+    view: 'membership' as MembershipView,
+    icon: LayoutDashboard,
+  },
+  { label: 'Courses', view: 'videos' as MembershipView, icon: BookOpen },
+  { label: 'My Sessions', view: 'live' as MembershipView, icon: PlayCircle },
+  { label: 'Events', view: 'events' as MembershipView, icon: Calendar },
+  { label: 'Resources', view: 'resources' as MembershipView, icon: Folder },
+  { label: 'Profile', view: 'profile' as MembershipView, icon: Settings },
 ];
 
 interface SidebarProps {
-  activeView: DashboardView;
-  onViewChange: (view: DashboardView) => void;
+  activeView: MembershipView;
+  onViewChange: (view: MembershipView) => void;
 }
 
 export function Sidebar({ activeView, onViewChange }: SidebarProps) {
@@ -45,7 +45,7 @@ export function Sidebar({ activeView, onViewChange }: SidebarProps) {
       <nav className="flex-1 p-4 space-y-2">
         {navLinks.map(({ label, view, icon: Icon }) => {
           const isActive = activeView === view;
-          
+
           return (
             <Button
               key={view}
@@ -61,4 +61,4 @@ export function Sidebar({ activeView, onViewChange }: SidebarProps) {
       </nav>
     </aside>
   );
-} 
+}
