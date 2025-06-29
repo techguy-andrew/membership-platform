@@ -1,42 +1,44 @@
+'use client';
+
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+
+const navigation = [
+  { name: 'Home', href: '/' },
+  { name: 'About', href: '/about' },
+  { name: 'Pricing', href: '/pricing' },
+  { name: 'Contact', href: '/contact' },
+];
+
 export function Header() {
   return (
-    <header className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-14 items-center">
-        <div className="mr-4 flex">
-          <button
-            onClick={() => (window.location.href = '/')}
-            className="mr-6 flex items-center space-x-2"
-          >
-            <span className="font-bold">MembershipPlatform</span>
-          </button>
-          <nav className="flex items-center space-x-6 text-sm">
-            <a href="/pricing" className="hover:text-foreground/80">
-              Pricing
-            </a>
-            <a href="/about" className="hover:text-foreground/80">
-              About
-            </a>
-            <a href="/contact" className="hover:text-foreground/80">
-              Contact
-            </a>
-          </nav>
-        </div>
+    <header className="border-b bg-white">
+      <div className="container mx-auto px-4">
+        <div className="flex h-16 items-center justify-between">
+          <Link href="/" className="text-xl font-bold text-gray-900">
+            MembershipPlatform
+          </Link>
 
-        <div className="flex flex-1 items-center justify-end space-x-4">
-          <nav className="flex items-center space-x-2">
-            <a
-              href="/login"
-              className="text-sm font-medium hover:text-foreground/80"
-            >
-              Sign In
-            </a>
-            <a
-              href="/register"
-              className="text-sm font-medium bg-primary text-primary-foreground px-3 py-1 rounded-md hover:bg-primary/90"
-            >
-              Get Started
-            </a>
+          <nav className="hidden md:flex items-center space-x-8">
+            {navigation.map(item => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className="text-gray-600 hover:text-gray-900 transition-colors"
+              >
+                {item.name}
+              </Link>
+            ))}
           </nav>
+
+          <div className="flex items-center space-x-4">
+            <Button variant="ghost" asChild>
+              <Link href="/login">Login</Link>
+            </Button>
+            <Button asChild>
+              <Link href="/register">Sign Up</Link>
+            </Button>
+          </div>
         </div>
       </div>
     </header>

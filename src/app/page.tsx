@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -11,48 +12,6 @@ import { Badge } from '@/components/ui/badge';
 export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
-      {/* Navigation */}
-      <nav className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex h-16 items-center justify-between">
-            <div className="flex items-center space-x-4">
-              <div className="flex items-center space-x-2">
-                <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
-                  <span className="text-primary-foreground font-bold text-sm">
-                    MP
-                  </span>
-                </div>
-                <span className="font-bold text-xl">MembershipPro</span>
-              </div>
-            </div>
-            <div className="hidden md:flex items-center space-x-6">
-              <a
-                href="#features"
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-              >
-                Features
-              </a>
-              <a
-                href="#pricing"
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-              >
-                Pricing
-              </a>
-              <a
-                href="#about"
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-              >
-                About
-              </a>
-              <Button variant="outline" size="sm">
-                Sign In
-              </Button>
-              <Button size="sm">Get Started</Button>
-            </div>
-          </div>
-        </div>
-      </nav>
-
       {/* Hero Section */}
       <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="text-center space-y-8 max-w-4xl mx-auto">
@@ -69,11 +28,16 @@ export default function Home() {
             audience, control your brand, and maximize your revenue.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button size="lg" className="text-lg px-8 py-6">
-              Start Free Trial
+            <Button size="lg" className="text-lg px-8 py-6" asChild>
+              <Link href="/register">Sign Up</Link>
             </Button>
-            <Button variant="outline" size="lg" className="text-lg px-8 py-6">
-              Watch Demo
+            <Button
+              variant="outline"
+              size="lg"
+              className="text-lg px-8 py-6"
+              asChild
+            >
+              <Link href="/login">Get Started</Link>
             </Button>
           </div>
           <div className="flex items-center justify-center space-x-8 text-sm text-muted-foreground">
@@ -315,163 +279,19 @@ export default function Home() {
               Join thousands of creators who are already building successful
               membership businesses with our platform.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex justify-center">
               <Button
                 size="lg"
                 variant="secondary"
                 className="text-lg px-8 py-6"
+                asChild
               >
-                Start Your Free Trial
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="text-lg px-8 py-6 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary"
-              >
-                Schedule Demo
+                <Link href="/register">Start Free Trial</Link>
               </Button>
             </div>
           </CardContent>
         </Card>
       </section>
-
-      {/* Footer */}
-      <footer className="border-t bg-muted/30">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div className="space-y-4">
-              <div className="flex items-center space-x-2">
-                <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
-                  <span className="text-primary-foreground font-bold text-sm">
-                    MP
-                  </span>
-                </div>
-                <span className="font-bold text-xl">MembershipPro</span>
-              </div>
-              <p className="text-muted-foreground">
-                Build, launch, and scale your membership platform with powerful
-                tools designed for creators.
-              </p>
-            </div>
-
-            <div className="space-y-4">
-              <h3 className="font-semibold">Product</h3>
-              <div className="space-y-2 text-sm text-muted-foreground">
-                <a
-                  href="#"
-                  className="block hover:text-foreground transition-colors"
-                >
-                  Features
-                </a>
-                <a
-                  href="#"
-                  className="block hover:text-foreground transition-colors"
-                >
-                  Pricing
-                </a>
-                <a
-                  href="#"
-                  className="block hover:text-foreground transition-colors"
-                >
-                  Integrations
-                </a>
-                <a
-                  href="#"
-                  className="block hover:text-foreground transition-colors"
-                >
-                  API
-                </a>
-              </div>
-            </div>
-
-            <div className="space-y-4">
-              <h3 className="font-semibold">Company</h3>
-              <div className="space-y-2 text-sm text-muted-foreground">
-                <a
-                  href="#"
-                  className="block hover:text-foreground transition-colors"
-                >
-                  About
-                </a>
-                <a
-                  href="#"
-                  className="block hover:text-foreground transition-colors"
-                >
-                  Blog
-                </a>
-                <a
-                  href="#"
-                  className="block hover:text-foreground transition-colors"
-                >
-                  Careers
-                </a>
-                <a
-                  href="#"
-                  className="block hover:text-foreground transition-colors"
-                >
-                  Contact
-                </a>
-              </div>
-            </div>
-
-            <div className="space-y-4">
-              <h3 className="font-semibold">Support</h3>
-              <div className="space-y-2 text-sm text-muted-foreground">
-                <a
-                  href="#"
-                  className="block hover:text-foreground transition-colors"
-                >
-                  Help Center
-                </a>
-                <a
-                  href="#"
-                  className="block hover:text-foreground transition-colors"
-                >
-                  Documentation
-                </a>
-                <a
-                  href="#"
-                  className="block hover:text-foreground transition-colors"
-                >
-                  Community
-                </a>
-                <a
-                  href="#"
-                  className="block hover:text-foreground transition-colors"
-                >
-                  Status
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div className="border-t mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-            <p className="text-sm text-muted-foreground">
-              © 2024 MembershipPro. All rights reserved.
-            </p>
-            <div className="flex space-x-6 mt-4 md:mt-0">
-              <a
-                href="#"
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-              >
-                Privacy
-              </a>
-              <a
-                href="#"
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-              >
-                Terms
-              </a>
-              <a
-                href="#"
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-              >
-                Cookies
-              </a>
-            </div>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }
