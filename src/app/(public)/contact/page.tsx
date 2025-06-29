@@ -65,11 +65,11 @@ export default function ContactPage() {
             Contact Us
           </Badge>
           <h1 className="text-4xl font-bold text-foreground mb-4">
-            Get in Touch
+            Let's Discuss Your Business Growth
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Have questions? We&apos;d love to hear from you. Send us a message
-            and we&apos;ll respond as soon as possible.
+            Have questions about our coaching programs? Ready to join our community? 
+            We'd love to hear from you and help you accelerate your business success.
           </p>
         </div>
 
@@ -79,9 +79,9 @@ export default function ContactPage() {
             <div className="space-y-6">
               <Card>
                 <CardHeader>
-                  <CardTitle>Contact Information</CardTitle>
+                  <CardTitle>Get in Touch</CardTitle>
                   <CardDescription>
-                    Reach out to us through any of these channels
+                    Reach out to our coaching team through any of these channels
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
@@ -92,7 +92,7 @@ export default function ContactPage() {
                     <div>
                       <p className="font-medium">Email</p>
                       <p className="text-sm text-muted-foreground">
-                        support@membershipplatform.com
+                        hello@elitebusinesscoaching.com
                       </p>
                     </div>
                   </div>
@@ -116,7 +116,7 @@ export default function ContactPage() {
                     <div>
                       <p className="font-medium">Business Hours</p>
                       <p className="text-sm text-muted-foreground">
-                        Mon-Fri 9AM-5PM EST
+                        Mon-Fri 9AM-6PM EST
                       </p>
                     </div>
                   </div>
@@ -125,9 +125,9 @@ export default function ContactPage() {
 
               <Card>
                 <CardHeader>
-                  <CardTitle>Support</CardTitle>
+                  <CardTitle>Coaching Support</CardTitle>
                   <CardDescription>
-                    Get help with your account and platform
+                    Get help with your membership and coaching questions
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -137,15 +137,44 @@ export default function ContactPage() {
                         <MessageSquare className="h-5 w-5 text-blue-600" />
                       </div>
                       <div>
-                        <p className="font-medium">Help Center</p>
+                        <p className="font-medium">Member Support</p>
                         <p className="text-sm text-muted-foreground">
-                          Browse our comprehensive documentation
+                          Get help with your coaching membership
                         </p>
                       </div>
                     </div>
                     <Button variant="outline" className="w-full">
-                      Visit Help Center
+                      Contact Support
                     </Button>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle>Community Stats</CardTitle>
+                  <CardDescription>
+                    See what our members are achieving
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="text-center">
+                      <div className="text-2xl font-bold text-primary">2,500+</div>
+                      <p className="text-sm text-muted-foreground">Active Members</p>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-2xl font-bold text-primary">$50M+</div>
+                      <p className="text-sm text-muted-foreground">Revenue Generated</p>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-2xl font-bold text-primary">94%</div>
+                      <p className="text-sm text-muted-foreground">Success Rate</p>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-2xl font-bold text-primary">15+</div>
+                      <p className="text-sm text-muted-foreground">Expert Coaches</p>
+                    </div>
                   </div>
                 </CardContent>
               </Card>
@@ -156,16 +185,15 @@ export default function ContactPage() {
               <CardHeader>
                 <CardTitle>Send us a Message</CardTitle>
                 <CardDescription>
-                  Fill out the form below and we&apos;ll get back to you within
-                  24 hours
+                  Tell us about your business goals and how we can help you achieve them
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 {isSubmitted ? (
                   <div className="text-center space-y-4">
                     <div className="bg-green-50 border border-green-200 text-green-600 px-4 py-3 rounded-md text-sm">
-                      Thank you for your message! We&apos;ll get back to you
-                      soon.
+                      Thank you for your message! We'll get back to you within 24 hours 
+                      to discuss how we can help accelerate your business growth.
                     </div>
                     <Button
                       variant="outline"
@@ -177,7 +205,7 @@ export default function ContactPage() {
                 ) : (
                   <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                     <div className="space-y-2">
-                      <Label htmlFor="name">Name</Label>
+                      <Label htmlFor="name">Full Name</Label>
                       <Input
                         id="name"
                         placeholder="Your full name"
@@ -192,7 +220,7 @@ export default function ContactPage() {
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="email">Email</Label>
+                      <Label htmlFor="email">Email Address</Label>
                       <Input
                         id="email"
                         type="email"
@@ -211,7 +239,7 @@ export default function ContactPage() {
                       <Label htmlFor="subject">Subject</Label>
                       <Input
                         id="subject"
-                        placeholder="What's this about?"
+                        placeholder="What would you like to discuss?"
                         {...register('subject')}
                         className={errors.subject ? 'border-red-500' : ''}
                       />
@@ -227,7 +255,7 @@ export default function ContactPage() {
                       <textarea
                         id="message"
                         rows={5}
-                        placeholder="Tell us more about your inquiry..."
+                        placeholder="Tell us about your business goals, challenges, or questions about our coaching programs..."
                         {...register('message')}
                         className={`w-full p-3 border border-gray-300 rounded-md resize-none ${
                           errors.message ? 'border-red-500' : ''

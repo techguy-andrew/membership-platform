@@ -13,7 +13,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
-import { Users, Target, Award, Heart, HelpCircle } from 'lucide-react';
+import { Users, Target, Award, Heart, HelpCircle, TrendingUp, Globe, Clock } from 'lucide-react';
 import Link from 'next/link';
 
 export default function AboutPage() {
@@ -23,15 +23,15 @@ export default function AboutPage() {
         {/* Header */}
         <div className="text-center mb-12">
           <Badge variant="secondary" className="mb-4">
-            About Us
+            About Elite Business Coaching
           </Badge>
           <h1 className="text-4xl font-bold text-foreground mb-4">
-            Building the Future of Membership Platforms
+            Empowering Entrepreneurs to Build Million-Dollar Businesses
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            We help creators, educators, and businesses build their own branded
-            subscription-based communities with powerful tools and seamless
-            experiences.
+            We're a community of business coaches, entrepreneurs, and growth experts 
+            dedicated to helping you scale your business with proven strategies, 
+            expert guidance, and powerful networking opportunities.
           </p>
         </div>
 
@@ -46,9 +46,9 @@ export default function AboutPage() {
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground leading-relaxed">
-                To democratize the creation of membership platforms, empowering
-                creators and businesses to build sustainable revenue streams
-                through community-driven content and experiences.
+                To democratize business success by providing entrepreneurs with 
+                access to world-class coaching, proven strategies, and a supportive 
+                community that accelerates their path to building scalable, profitable businesses.
               </p>
             </CardContent>
           </Card>
@@ -62,9 +62,9 @@ export default function AboutPage() {
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground leading-relaxed">
-                We believe in transparency, innovation, and putting creators
-                first. Every feature we build is designed to help you succeed
-                and grow your community.
+                We believe in transparency, accountability, and results-driven coaching. 
+                Every strategy we teach and every connection we facilitate is designed 
+                to help you achieve measurable business growth and lasting success.
               </p>
             </CardContent>
           </Card>
@@ -75,9 +75,9 @@ export default function AboutPage() {
           <Card className="text-center">
             <CardContent className="pt-6">
               <div className="text-3xl font-bold text-primary mb-2">
-                10,000+
+                2,500+
               </div>
-              <p className="text-sm text-muted-foreground">Active Creators</p>
+              <p className="text-sm text-muted-foreground">Active Members</p>
             </CardContent>
           </Card>
 
@@ -90,58 +90,99 @@ export default function AboutPage() {
 
           <Card className="text-center">
             <CardContent className="pt-6">
-              <div className="text-3xl font-bold text-primary mb-2">500K+</div>
-              <p className="text-sm text-muted-foreground">Members Served</p>
+              <div className="text-3xl font-bold text-primary mb-2">94%</div>
+              <p className="text-sm text-muted-foreground">Success Rate</p>
             </CardContent>
           </Card>
 
           <Card className="text-center">
             <CardContent className="pt-6">
-              <div className="text-3xl font-bold text-primary mb-2">99.9%</div>
-              <p className="text-sm text-muted-foreground">Uptime</p>
+              <div className="text-3xl font-bold text-primary mb-2">15+</div>
+              <p className="text-sm text-muted-foreground">Expert Coaches</p>
             </CardContent>
           </Card>
         </div>
 
-        {/* Team Section */}
+        {/* Coach Bio Section */}
         <Card className="mb-12">
           <CardHeader className="text-center">
-            <CardTitle className="text-3xl">Meet Our Team</CardTitle>
+            <CardTitle className="text-3xl">Meet Our Lead Coach</CardTitle>
             <CardDescription>
-              The passionate people behind MembershipPlatform
+              The visionary behind Elite Business Coaching Community
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="grid gap-8 md:grid-cols-2 items-center">
+              <div className="text-center md:text-left">
+                <h3 className="text-2xl font-bold mb-4">David Chen</h3>
+                <p className="text-lg text-muted-foreground mb-4">
+                  Serial Entrepreneur & Business Coach
+                </p>
+                <p className="text-muted-foreground leading-relaxed mb-6">
+                  With over 15 years of experience building and scaling businesses, 
+                  David has helped hundreds of entrepreneurs achieve their dreams. 
+                  From starting his first company at 22 to building a portfolio 
+                  of successful ventures, he brings real-world expertise to every coaching session.
+                </p>
+                <div className="space-y-2 text-sm text-muted-foreground">
+                  <div className="flex items-center gap-2">
+                    <TrendingUp className="h-4 w-4" />
+                    <span>Built 3 companies to $10M+ revenue</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Users className="h-4 w-4" />
+                    <span>Coached 500+ entrepreneurs</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Award className="h-4 w-4" />
+                    <span>Certified Business Coach (IBC)</span>
+                  </div>
+                </div>
+              </div>
+              <div className="h-64 bg-primary/10 rounded-lg flex items-center justify-center">
+                <Users className="h-24 w-24 text-primary" />
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Success Stories */}
+        <Card className="mb-12">
+          <CardHeader className="text-center">
+            <CardTitle className="text-3xl">Member Success Stories</CardTitle>
+            <CardDescription>
+              Real results from our community members
             </CardDescription>
           </CardHeader>
           <CardContent>
             <div className="grid gap-8 md:grid-cols-3">
               <div className="text-center">
-                <div className="h-24 w-24 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Users className="h-12 w-12 text-primary" />
+                <div className="h-16 w-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <TrendingUp className="h-8 w-8 text-green-600" />
                 </div>
-                <h3 className="font-semibold mb-2">Leadership Team</h3>
+                <h3 className="font-semibold mb-2">Sarah's E-commerce Empire</h3>
                 <p className="text-sm text-muted-foreground">
-                  Experienced executives with deep knowledge in SaaS and creator
-                  economy
+                  "Started with $5K, now generating $2M annually. The coaching and community support were game-changers."
                 </p>
               </div>
 
               <div className="text-center">
-                <div className="h-24 w-24 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Award className="h-12 w-12 text-primary" />
+                <div className="h-16 w-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Globe className="h-8 w-8 text-blue-600" />
                 </div>
-                <h3 className="font-semibold mb-2">Engineering Team</h3>
+                <h3 className="font-semibold mb-2">Mike's Consulting Success</h3>
                 <p className="text-sm text-muted-foreground">
-                  World-class developers building scalable, secure solutions
+                  "Increased my consulting rate from $150 to $500/hour and scaled to a 7-figure business."
                 </p>
               </div>
 
               <div className="text-center">
-                <div className="h-24 w-24 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Heart className="h-12 w-12 text-primary" />
+                <div className="h-16 w-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Clock className="h-8 w-8 text-purple-600" />
                 </div>
-                <h3 className="font-semibold mb-2">Support Team</h3>
+                <h3 className="font-semibold mb-2">Lisa's SaaS Launch</h3>
                 <p className="text-sm text-muted-foreground">
-                  Dedicated customer success specialists ready to help you
-                  succeed
+                  "Launched my SaaS product in 6 months and reached $100K ARR within the first year."
                 </p>
               </div>
             </div>
@@ -156,7 +197,7 @@ export default function AboutPage() {
               Frequently Asked Questions
             </CardTitle>
             <CardDescription>
-              Common questions about our membership platform
+              Common questions about our coaching methodology
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -168,114 +209,69 @@ export default function AboutPage() {
             >
               <AccordionItem value="item-1">
                 <AccordionTrigger>
-                  What is included in each membership tier?
+                  What makes your coaching different from others?
                 </AccordionTrigger>
                 <AccordionContent className="flex flex-col gap-4 text-balance">
                   <p>
-                    Our Basic plan ($29/month) includes up to 1,000 members,
-                    basic content management, email support, and standard
-                    integrations. The Professional plan ($79/month) adds
-                    advanced analytics, priority support, custom branding, video
-                    streaming, and API access.
+                    Our coaching combines proven business strategies with real-world 
+                    experience from successful entrepreneurs. We focus on actionable 
+                    steps, accountability, and community support rather than just theory.
                   </p>
                   <p>
-                    The Enterprise plan ($199/month) provides unlimited members,
-                    custom analytics, dedicated support, white-label solutions,
-                    advanced security, and custom development.
+                    Plus, you get access to a network of 2,500+ entrepreneurs who 
+                    are actively building and scaling their businesses, providing 
+                    peer support and valuable connections.
                   </p>
                 </AccordionContent>
               </AccordionItem>
 
               <AccordionItem value="item-2">
                 <AccordionTrigger>
-                  How do I cancel my subscription?
+                  How quickly can I expect to see results?
                 </AccordionTrigger>
                 <AccordionContent className="flex flex-col gap-4 text-balance">
                   <p>
-                    You can cancel your subscription at any time through your
-                    account dashboard. Simply go to Settings → Billing and click
-                    the &quot;Cancel Subscription&quot; button. There are no
-                    cancellation fees or penalties.
+                    Most members see measurable improvements within 30-60 days of 
+                    implementing our strategies. However, sustainable business growth 
+                    typically takes 6-12 months of consistent effort and application.
                   </p>
                   <p>
-                    Your access will continue until the end of your current
-                    billing period. You can reactivate your subscription at any
-                    time and pick up right where you left off.
+                    We provide ongoing support and accountability to ensure you stay 
+                    on track and achieve your long-term business goals.
                   </p>
                 </AccordionContent>
               </AccordionItem>
 
               <AccordionItem value="item-3">
                 <AccordionTrigger>
-                  Can I upgrade or downgrade my plan?
+                  What if I'm not satisfied with the coaching?
                 </AccordionTrigger>
                 <AccordionContent className="flex flex-col gap-4 text-balance">
                   <p>
-                    Yes, you can upgrade or downgrade your plan at any time
-                    through your account dashboard. Changes take effect
-                    immediately, and billing is adjusted on a prorated basis.
+                    We offer a 30-day money-back guarantee. If you're not completely 
+                    satisfied with our coaching community within the first 30 days, 
+                    we'll provide a full refund, no questions asked.
                   </p>
                   <p>
-                    When upgrading, you&apos;ll only pay the difference for the
-                    remaining billing period. When downgrading, you&apos;ll
-                    receive a credit for the unused portion of your current
-                    plan.
+                    We're committed to your success and will work with you to ensure 
+                    you get the value you expect from our community.
                   </p>
                 </AccordionContent>
               </AccordionItem>
 
               <AccordionItem value="item-4">
-                <AccordionTrigger>Do you offer refunds?</AccordionTrigger>
-                <AccordionContent className="flex flex-col gap-4 text-balance">
-                  <p>
-                    We offer a 30-day money-back guarantee for all new
-                    subscriptions. If you&apos;re not satisfied with our
-                    platform within the first 30 days, we&apos;ll provide a full
-                    refund, no questions asked.
-                  </p>
-                  <p>
-                    After the 30-day period, refunds are handled on a
-                    case-by-case basis. We&apos;re committed to your
-                    satisfaction and will work with you to resolve any issues
-                    you may have.
-                  </p>
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="item-5">
                 <AccordionTrigger>
-                  How do I access member-only content?
+                  Do you offer industry-specific coaching?
                 </AccordionTrigger>
                 <AccordionContent className="flex flex-col gap-4 text-balance">
                   <p>
-                    Once you&apos;re a member, you&apos;ll have access to all
-                    member-only content through your dashboard. This includes
-                    exclusive courses, downloadable resources, community forums,
-                    and live events.
+                    Yes! While our core coaching covers universal business principles, 
+                    we have specialized coaches and mastermind groups for specific 
+                    industries including e-commerce, SaaS, consulting, and service businesses.
                   </p>
                   <p>
-                    You can access content on any device - desktop, tablet, or
-                    mobile. Our platform syncs across all devices, so you can
-                    continue learning wherever you are.
-                  </p>
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="item-6">
-                <AccordionTrigger>
-                  Is my payment information secure?
-                </AccordionTrigger>
-                <AccordionContent className="flex flex-col gap-4 text-balance">
-                  <p>
-                    Absolutely. We use Stripe for all payment processing, which
-                    is PCI DSS Level 1 compliant - the highest level of security
-                    certification in the payment industry. Your payment
-                    information is encrypted and never stored on our servers.
-                  </p>
-                  <p>
-                    We also implement additional security measures including SSL
-                    encryption, two-factor authentication, and regular security
-                    audits to ensure your data is always protected.
+                    You can also connect with other members in your industry through 
+                    our community forums and networking events.
                   </p>
                 </AccordionContent>
               </AccordionItem>
@@ -284,25 +280,26 @@ export default function AboutPage() {
         </Card>
 
         {/* CTA Section */}
-        <Card className="text-center bg-primary/5 border-primary/20">
-          <CardHeader>
-            <CardTitle className="text-2xl">Ready to Get Started?</CardTitle>
-            <CardDescription>
-              Join thousands of creators building successful membership
-              platforms
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" asChild>
-                <Link href="/register">Start Free Trial</Link>
-              </Button>
-              <Button variant="outline" size="lg" asChild>
-                <Link href="/contact">Contact Sales</Link>
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
+        <div className="text-center">
+          <Card className="bg-primary/5 border-primary/20 max-w-2xl mx-auto">
+            <CardHeader>
+              <CardTitle className="text-2xl">Ready to Transform Your Business?</CardTitle>
+              <CardDescription>
+                Join our community of successful entrepreneurs and start your journey to business growth
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button size="lg" asChild>
+                  <Link href="/register">Join Elite Community</Link>
+                </Button>
+                <Button variant="outline" size="lg" asChild>
+                  <Link href="/pricing">View Plans</Link>
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
       </div>
     </div>
   );

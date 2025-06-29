@@ -44,15 +44,14 @@ const publicNavigation = [
   { name: 'Home', href: '/' },
   { name: 'About', href: '/about' },
   { name: 'Pricing', href: '/pricing' },
-  { name: 'FAQ', href: '/faq' },
   { name: 'Contact', href: '/contact' },
 ];
 
 const authenticatedNavigation = [
   { name: 'Dashboard', href: '/dashboard' },
-  { name: 'Profile', href: '/profile' },
-  { name: 'Billing', href: '/billing' },
-  { name: 'Settings', href: '/settings' },
+  { name: 'Insights', href: '/dashboard/insights' },
+  { name: 'Community', href: '/dashboard/community' },
+  { name: 'Profile', href: '/dashboard/profile' },
 ];
 
 export function Navbar() {
@@ -77,7 +76,7 @@ export function Navbar() {
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="text-xl font-bold text-foreground">
-            MembershipPlatform
+            Elite Business Coaching
           </Link>
 
           {/* Desktop Navigation */}
@@ -132,19 +131,19 @@ export function Navbar() {
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
-                    <Link href="/profile" className="flex items-center">
+                    <Link href="/dashboard/profile" className="flex items-center">
                       <User className="mr-2 h-4 w-4" />
                       Profile
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
-                    <Link href="/billing" className="flex items-center">
+                    <Link href="/dashboard/billing" className="flex items-center">
                       <CreditCard className="mr-2 h-4 w-4" />
                       Billing
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
-                    <Link href="/settings" className="flex items-center">
+                    <Link href="/dashboard/settings" className="flex items-center">
                       <Settings className="mr-2 h-4 w-4" />
                       Settings
                     </Link>
@@ -165,7 +164,7 @@ export function Navbar() {
                   <Link href="/login">Login</Link>
                 </Button>
                 <Button asChild>
-                  <Link href="/register">Sign Up</Link>
+                  <Link href="/register">Join Community</Link>
                 </Button>
               </>
             )}
@@ -222,21 +221,21 @@ export function Navbar() {
                     Dashboard
                   </Link>
                   <Link
-                    href="/profile"
+                    href="/dashboard/profile"
                     className="block px-3 py-2 text-base font-medium text-muted-foreground hover:text-foreground hover:bg-muted/50"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Profile
                   </Link>
                   <Link
-                    href="/billing"
+                    href="/dashboard/billing"
                     className="block px-3 py-2 text-base font-medium text-muted-foreground hover:text-foreground hover:bg-muted/50"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Billing
                   </Link>
                   <Link
-                    href="/settings"
+                    href="/dashboard/settings"
                     className="block px-3 py-2 text-base font-medium text-muted-foreground hover:text-foreground hover:bg-muted/50"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
@@ -271,7 +270,7 @@ export function Navbar() {
                       href="/register"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
-                      Sign Up
+                      Join Community
                     </Link>
                   </Button>
                 </div>

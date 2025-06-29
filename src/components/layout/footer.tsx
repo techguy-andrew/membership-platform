@@ -83,12 +83,6 @@ export function Footer() {
           <div className="space-y-4">
             <h3 className="font-semibold">Support</h3>
             <div className="space-y-2 text-sm text-muted-foreground">
-              <Link
-                href="/faq"
-                className="block hover:text-foreground transition-colors"
-              >
-                FAQ
-              </Link>
               <a
                 href="#"
                 className="block hover:text-foreground transition-colors"
