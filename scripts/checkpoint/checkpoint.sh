@@ -1,18 +1,18 @@
 #!/bin/bash
 
 # =============================================================================
-# Development Checkpoint Automation Script
+# Development Checkpoint Automation Script - Optimized Version
 # =============================================================================
 # Automates documentation updates and Git checkpoint workflow
-# Author: Generated with Claude Code
-# Version: 1.0.0
+# Author: Generated with Claude Code - Optimized for cross-platform compatibility
+# Version: 2.0.0
 # =============================================================================
 
 set -euo pipefail  # Exit on error, undefined vars, pipe failures
 
-# Script directory
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+# Script directory - Using more portable approach
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+PROJECT_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
 CONTEXT_DIR="$PROJECT_ROOT/context"
 TEMPLATES_DIR="$SCRIPT_DIR/templates"
 
@@ -45,6 +45,15 @@ DRY_RUN=false
 SKIP_PUSH=false
 BACKUP_DIR=""
 TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
+AUTO_YES=false
+
+# Detect operating system for compatibility
+OS_TYPE="$(uname -s)"
+case "$OS_TYPE" in
+    Darwin*)  IS_MACOS=true ;;
+    Linux*)   IS_MACOS=false ;;
+    *)        IS_MACOS=false ;;
+esac
 
 # =============================================================================
 # Utility Functions
@@ -52,7 +61,7 @@ TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
 
 print_header() {
     echo -e "${PURPLE}═══════════════════════════════════════════════════════════════════════════════${NC}"
-    echo -e "${WHITE}                          Development Checkpoint Script${NC}"
+    echo -e "${WHITE}                    Development Checkpoint Script v2.0${NC}"
     echo -e "${PURPLE}═══════════════════════════════════════════════════════════════════════════════${NC}"
     echo
 }
@@ -75,6 +84,19 @@ print_warning() {
 
 print_info() {
     echo -e "${BLUE}${INFO} $1${NC}"
+}
+
+# Cross-platform string case conversion
+to_uppercase() {
+    echo "$1" | tr '[:lower:]' '[:upper:]'
+}
+
+to_lowercase() {
+    echo "$1" | tr '[:upper:]' '[:lower:]'
+}
+
+to_title_case() {
+    echo "$1" | sed 's/\b\w/\U&/g'
 }
 
 # =============================================================================
@@ -111,8 +133,12 @@ check_git_status() {
     
     # Check for uncommitted changes
     if [[ -n $(git status --porcelain) ]]; then
-        print_warning "There are uncommitted changes in the repository"
-        if ! confirm "Continue anyway?"; then
+        print_warning "There are uncommitted changes in the repository:"
+        git status --porcelain | head -5
+        
+        if [[ "$AUTO_YES" == "true" ]]; then
+            print_info "Auto-continuing due to --yes flag"
+        elif ! confirm "Continue anyway?"; then
             exit 1
         fi
     fi
@@ -173,8 +199,19 @@ commit_changes() {
     
     if [[ "$SKIP_PUSH" == "false" ]]; then
         print_step "Pushing to remote..."
-        git push origin main
-        print_success "Changes pushed to remote repository"
+        
+        # Get current branch name
+        local current_branch
+        current_branch=$(git branch --show-current 2>/dev/null || git rev-parse --abbrev-ref HEAD)
+        
+        # Try to push, fallback to main if current branch doesn't exist on remote
+        if git push origin "$current_branch" 2>/dev/null; then
+            print_success "Changes pushed to remote repository ($current_branch)"
+        elif git push origin main 2>/dev/null; then
+            print_success "Changes pushed to remote repository (main)"
+        else
+            print_warning "Could not push to remote. Please push manually."
+        fi
     else
         print_info "Skipping push to remote (--skip-push flag used)"
     fi
@@ -184,24 +221,42 @@ commit_changes() {
 # Documentation Updates
 # =============================================================================
 
+# Cross-platform sed replacement
+safe_sed() {
+    local pattern="$1"
+    local replacement="$2"
+    local file="$3"
+    
+    if [[ "$IS_MACOS" == "true" ]]; then
+        sed -i '' "s/$pattern/$replacement/g" "$file"
+    else
+        sed -i "s/$pattern/$replacement/g" "$file"
+    fi
+}
+
 update_timestamp_in_files() {
     local current_date=$(date +"%B %d, %Y")
     local current_month_year=$(date +"%B %Y")
     
+    print_step "Updating timestamps in documentation files..."
+    
     # Update setup-log.md
     if [[ -f "$CONTEXT_DIR/setup-log.md" ]]; then
-        sed -i '' "s/\*\*Last Updated:\*\* .*/\*\*Last Updated:\*\* $current_date/" "$CONTEXT_DIR/setup-log.md"
-        sed -i '' "s/_Last updated: .*/_Last updated: $current_date_/" "$CONTEXT_DIR/setup-log.md"
+        safe_sed "\*\*Last Updated:\*\* .*" "\*\*Last Updated:\*\* $current_date" "$CONTEXT_DIR/setup-log.md"
+        safe_sed "_Last updated: .*" "_Last updated: ${current_date}_" "$CONTEXT_DIR/setup-log.md"
+        print_info "Updated setup-log.md"
     fi
     
     # Update tech-stack.md
     if [[ -f "$CONTEXT_DIR/tech-stack.md" ]]; then
-        sed -i '' "s/\*\*Last Updated:\*\* .*/\*\*Last Updated:\*\* $current_date/" "$CONTEXT_DIR/tech-stack.md"
+        safe_sed "\*\*Last Updated:\*\* .*" "\*\*Last Updated:\*\* $current_date" "$CONTEXT_DIR/tech-stack.md"
+        print_info "Updated tech-stack.md"
     fi
     
     # Update development-plan.md
     if [[ -f "$CONTEXT_DIR/development-plan.md" ]]; then
-        sed -i '' "s/_\*\*Updated Timeline\*\*: .*/_\*\*Updated Timeline\*\*: Updated $current_month_year with latest progress._/" "$CONTEXT_DIR/development-plan.md"
+        safe_sed "_\*\*Updated Timeline\*\*: .*" "_\*\*Updated Timeline\*\*: Updated $current_month_year with latest progress._" "$CONTEXT_DIR/development-plan.md"
+        print_info "Updated development-plan.md"
     fi
 }
 
@@ -210,23 +265,27 @@ generate_phase_report() {
     local description="$2"
     local type="$3"
     local current_date=$(date +"%B %d, %Y")
-    local report_filename="${type^^}_${phase// /_}_IMPLEMENTATION_REPORT.md"
+    
+    # Use cross-platform string manipulation
+    local type_upper=$(to_uppercase "$type")
+    local phase_safe=$(echo "$phase" | tr ' ' '_' | tr '[:upper:]' '[:lower:]')
+    local report_filename="${type_upper}_${phase_safe}_IMPLEMENTATION_REPORT.md"
     
     print_step "Generating implementation report: $report_filename"
     
     cat > "$PROJECT_ROOT/$report_filename" << EOF
-# ${phase} Implementation Report
-## ${description}
+# $phase Implementation Report
+## $description
 
 **Implementation Date:** $current_date  
 **Status:** Complete - Ready for Next Phase  
-**Type:** ${type^} Implementation
+**Type:** $(to_title_case "$type") Implementation
 
 ---
 
 ## Overview
 
-This report documents the successful implementation of ${description,,} for the Elite Business Coaching Community membership platform.
+This report documents the successful implementation of $(to_lowercase "$description") for the Elite Business Coaching Community membership platform.
 
 ---
 
@@ -297,9 +356,9 @@ This report documents the successful implementation of ${description,,} for the 
 
 ## Conclusion
 
-${description} implementation represents a significant milestone in the membership platform development. The system successfully [describe achievements].
+$description implementation represents a significant milestone in the membership platform development. The system successfully [describe achievements].
 
-**Status:** ${phase} Complete ✅  
+**Status:** $phase Complete ✅  
 **Next Phase:** [Next Phase Name] 🔄
 
 ---
@@ -333,6 +392,12 @@ update_project_status() {
 confirm() {
     local prompt="$1"
     local response
+    
+    # If auto-yes is enabled, return true
+    if [[ "$AUTO_YES" == "true" ]]; then
+        echo -e "${YELLOW}$prompt (y/n): ${NC}y (auto-yes enabled)"
+        return 0
+    fi
     
     while true; do
         echo -en "${YELLOW}$prompt (y/n): ${NC}"
@@ -414,7 +479,7 @@ generate_commit_message() {
 
 Ready for next development phase
 
-🤖 Generated with [Claude Code](https://claude.ai/code)
+🤖 Generated with checkpoint automation script
 
 Co-Authored-By: Claude <noreply@anthropic.com>"
             ;;
@@ -425,7 +490,7 @@ Co-Authored-By: Claude <noreply@anthropic.com>"
 📝 Updated documentation
 ✅ All tests passing
 
-🤖 Generated with [Claude Code](https://claude.ai/code)
+🤖 Generated with checkpoint automation script
 
 Co-Authored-By: Claude <noreply@anthropic.com>"
             ;;
@@ -436,7 +501,7 @@ Co-Authored-By: Claude <noreply@anthropic.com>"
 📋 Refreshed project documentation
 ✅ Checkpoint complete
 
-🤖 Generated with [Claude Code](https://claude.ai/code)
+🤖 Generated with checkpoint automation script
 
 Co-Authored-By: Claude <noreply@anthropic.com>"
             ;;
@@ -448,7 +513,7 @@ Co-Authored-By: Claude <noreply@anthropic.com>"
 📝 Documentation updated
 🎯 Ready for deployment
 
-🤖 Generated with [Claude Code](https://claude.ai/code)
+🤖 Generated with checkpoint automation script
 
 Co-Authored-By: Claude <noreply@anthropic.com>"
             ;;
@@ -459,7 +524,7 @@ Co-Authored-By: Claude <noreply@anthropic.com>"
 ✅ Documentation updated
 🔄 Development checkpoint complete
 
-🤖 Generated with [Claude Code](https://claude.ai/code)
+🤖 Generated with checkpoint automation script
 
 Co-Authored-By: Claude <noreply@anthropic.com>"
             ;;
@@ -511,7 +576,7 @@ main() {
 
 show_help() {
     cat << EOF
-Development Checkpoint Automation Script
+Development Checkpoint Automation Script v2.0
 
 USAGE:
     $0 [OPTIONS]
@@ -519,10 +584,11 @@ USAGE:
 OPTIONS:
     -p, --phase PHASE           Set the phase name (e.g., "Phase 2")
     -d, --description DESC      Set the description
-    -t, --type TYPE            Set the type (feature|bugfix|update|release)
+    -t, --type TYPE            Set the type (feature|bugfix|update/release)
     -q, --quick DESC           Quick mode with description
     --dry-run                  Show what would be done without making changes
     --skip-push                Don't push to remote repository
+    -y, --yes                  Auto-answer yes to all prompts
     -h, --help                 Show this help message
 
 EXAMPLES:
@@ -537,6 +603,14 @@ EXAMPLES:
 
     # Dry run
     $0 --phase "Phase 3" --description "Payment system" --type "feature" --dry-run
+
+    # Auto-confirm all prompts
+    $0 --phase "Phase 1" --description "Foundation setup" --type "feature" --yes
+
+COMPATIBILITY:
+    - Cross-platform: Works on macOS, Linux, and other Unix-like systems
+    - Bash 3.2+: Compatible with older bash versions (macOS default)
+    - Git integration: Handles different branch configurations
 
 EOF
 }
@@ -569,6 +643,10 @@ parse_arguments() {
                 SKIP_PUSH=true
                 shift
                 ;;
+            -y|--yes)
+                AUTO_YES=true
+                shift
+                ;;
             -h|--help)
                 show_help
                 exit 0
@@ -586,7 +664,7 @@ parse_arguments() {
 # Script Entry Point
 # =============================================================================
 
-# Change to project root
+# Ensure we're in the project root
 cd "$PROJECT_ROOT"
 
 # Parse command line arguments
