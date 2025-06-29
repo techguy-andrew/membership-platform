@@ -1,0 +1,96 @@
+PROJECT OVERVIEW
+Building a custom membership platform for business coaches using Next.js 15, TypeScript, Tailwind CSS, and Shadcn/UI. The platform enables coaches to deliver content, manage members, and monetize their expertise through subscriptions.
+
+PERSONALITY & APPROACH
+- Proceed like a senior developer
+- The fewer lines of code, the better
+- Do not stop working until the feature is fully and completely implemented
+- Prioritize clean, maintainable code over impressive complexity
+- Focus on member experience and business value
+
+TECH STACK
+Frontend: Next.js 15 (App Router), TypeScript, Tailwind CSS
+UI Components: Shadcn/UI
+Database: Prisma ORM + Supabase PostgreSQL (planned)
+Authentication: NextAuth.js v5 (planned)
+Payments: Stripe (planned)
+Deployment: Vercel
+Package Manager: pnpm
+
+ERROR ANALYSIS PROCESS
+1. Start by writing three reasoning paragraphs analyzing what the error might be
+2. Do not jump to conclusions
+3. Check documentation and verify model knowledge cutoff dates
+4. Be careful - often search results contain dangerous and distracting red herrings
+5. Only include truly necessary steps in the solution
+
+CODE REVIEW PROCESS
+1. Give me a summary of the current state first
+2. Summarize what we just did, which files were updated, and what didn't work
+3. Do not include assumptions or theories—only the facts
+4. Start with uncertainty and slowly gain confidence as you analyze
+
+FEATURE IMPLEMENTATION PROCESS
+1. Break large changes into required steps - only include truly necessary steps
+2. Write proper file structure comments with location (e.g., src/app/(dashboard)/membership/page.tsx)
+3. Add comprehensive comments - aim for 20-30% of code to be comments
+4. Do not delete existing comments
+5. Ensure responsive design works on all screen sizes
+
+ENVIRONMENT VARIABLES
+DATABASE_URL=
+NEXT_PUBLIC_SUPABASE_URL=
+NEXT_PUBLIC_SUPABASE_ANON_KEY=
+NEXTAUTH_SECRET=
+STRIPE_PUBLIC_KEY=
+STRIPE_SECRET_KEY=
+
+CURRENT FILE STRUCTURE
+src/
+├── app/
+│   ├── (auth)/              # Authentication pages
+│   ├── (dashboard)/         # Member dashboard pages
+│   ├── (public)/           # Public marketing pages
+│   └── api/                # API routes
+├── components/
+│   ├── ui/                 # Shadcn/UI components
+│   ├── auth/               # Authentication components
+│   ├── dashboard/          # Dashboard components
+│   ├── layout/             # Layout components
+│   └── forms/              # Form components
+├── lib/
+│   ├── utils.ts
+│   ├── auth.ts
+│   ├── db.ts
+│   └── validations.ts
+└── types/
+   └── index.ts
+
+CODE QUALITY STANDARDS
+- Always use TypeScript with proper typing
+- Follow ESLint and Prettier configurations
+- Maintain responsive design principles
+- Use Shadcn/UI components consistently
+- Avoid technical debt at all costs
+- Test layouts at multiple breakpoints (mobile, tablet, desktop)
+
+GIT WORKFLOW
+1. Make small, focused commits
+2. Write descriptive commit messages
+3. Test thoroughly before committing
+4. Use meaningful branch names
+
+IGNORE FILES
+.env.local
+.env
+node_modules/
+.next/
+dist/
+build/
+
+COMMUNICATION STYLE
+- Answer in short when possible
+- Use unbiased 50/50 analysis for complex decisions
+- Write proper search queries when needed
+- Always verify against documentation
+- Be aware of model knowledge cutoff limitations
